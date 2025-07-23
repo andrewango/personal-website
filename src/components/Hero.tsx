@@ -36,7 +36,7 @@ export default function Hero() {
           <a href="mailto:ango@udel.edu" className="hover:text-gray-400">
             <FaEnvelope />
           </a>
-          <a href="https://www.linkedin.com/in/andrewngo/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+          <a href="https://www.linkedin.com/in/andrewango/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
             <FaLinkedin />
           </a>
         </div>
