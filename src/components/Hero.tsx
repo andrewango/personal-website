@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGithub, FaEnvelope, FaLinkedin, FaChevronDown } from 'react-icons/fa';
 import '../index.css';
-import profilePic from '../images/profilePic.jpeg';
+import profilePic from '../images/profilePic.jpg';
 import NowPlaying from './NowPlaying';
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
           <img
             src={profilePic}
             alt="Andrew Ngo"
-            className="w-40 h-40 object-cover border-2 border-white shadow-lg"
+            className="w-60 h-60 object-cover border-2 border-white shadow-lg"
           />
           <div className="text-left">
             <p className="section-subtitle mb-2 animate-fade-in-up transition-opacity duration-1000 ease-out">

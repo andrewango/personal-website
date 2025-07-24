@@ -47,9 +47,12 @@ const experiences = [
 
 export default function Experience() {
     const scrollToProjects = () => {
-    const projexpSection = document.getElementById('projects');
-    if (projexpSection) {
-      projexpSection.scrollIntoView({ behavior: 'smooth' });
+    const projSection = document.getElementById('projects');
+    if (projSection) {
+      window.scrollTo({
+        top: projSection.offsetTop - 72,
+        behavior: 'smooth',
+      });
     }
   };
 

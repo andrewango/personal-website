@@ -41,9 +41,12 @@ const projects = [
 
 export default function Projects() {
     const scrollToPublications = () => {
-    const projexpSection = document.getElementById('publications');
-    if (projexpSection) {
-      projexpSection.scrollIntoView({ behavior: 'smooth' });
+    const pubSection = document.getElementById('publications');
+    if (pubSection) {
+      window.scrollTo({
+        top: pubSection.offsetTop - 72,
+        behavior: 'smooth',
+      });
     }
   };
 

@@ -3,9 +3,12 @@ import { FaChevronDown } from 'react-icons/fa';
 
 export default function About() {
     const scrollToExperience = () => {
-    const projexpSection = document.getElementById('experience');
-    if (projexpSection) {
-      projexpSection.scrollIntoView({ behavior: 'smooth' });
+    const expSection = document.getElementById('experience');
+    if (expSection) {
+      window.scrollTo({
+        top: expSection.offsetTop - 72,
+        behavior: 'smooth',
+      });
     }
   };
 
