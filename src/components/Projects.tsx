@@ -31,6 +31,11 @@ const projects = [
     title: 'Tweet Spam Detector',
     description: 'Training classification models to detect spam on Twitter.',
     github: 'https://github.com/andrewango/tweet_spam_detector'
+  },
+      {
+    title: 'Mathnasium Employee Scheduler (Unfinished)',
+    description: 'A scheduling system for a Mathnasium center I work at!',
+    github: 'https://github.com/andrewango/'
   }
 ];
 
