@@ -16,7 +16,8 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full bg-black bg-opacity-60 backdrop-blur-md z-50 px-10 py-5 flex justify-center items-center shadow-md text-base">
       <ul className="flex space-x-6 text-md font-medium">
         <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-gray-300 cursor-pointer">About Me</a></li>
-        <li><a href="#projectsandexperience" onClick={(e) => scrollToSection(e, 'projectsandexperience')} className="hover:text-gray-300 cursor-pointer">Projects and Experience</a></li>
+        <li><a href="#experience" onClick={(e) => scrollToSection(e, 'experience')} className="hover:text-gray-300 cursor-pointer">Experience</a></li>
+        <li><a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-gray-300 cursor-pointer">Projects</a></li>
         <li><a href="/Andrew_Ngo_Resume_25.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 cursor-pointer">Resume</a></li>
       </ul>
     </nav>
