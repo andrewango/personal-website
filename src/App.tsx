@@ -7,6 +7,7 @@ import About from './components/About';
 import Background from './components/Background';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Publications from './components/Publications';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <About />
       <Experience></Experience>
       <Projects />
+      <Publications />
 
       <footer className="py-6 text-center text-sm text-white/50">
         &copy; Andrew Ngo 2025

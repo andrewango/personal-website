@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaChevronDown } from 'react-icons/fa';
 
 const projects = [
   {
@@ -21,13 +21,31 @@ const projects = [
     title: '2-Player Chess',
     description: 'Real-time multiplayer chess built with Java.',
     github: 'https://github.com/andrewango/chess-inspired-game'
+  },
+  {
+    title: 'Emotion Classifier',
+    description: 'Training CNNs using transfer learning and bootstrapping to detect facial emotion.',
+    github: 'https://drive.google.com/file/d/1L6VpMFs3AHj_h_rMcCQibvUsCr185P1D/view?usp=sharing'
+  },
+    {
+    title: 'Tweet Spam Detector',
+    description: 'Training classification models to detect spam on Twitter.',
+    github: 'https://github.com/andrewango/tweet_spam_detector'
   }
 ];
 
 export default function Projects() {
+    const scrollToPublications = () => {
+    const projexpSection = document.getElementById('publications');
+    if (projexpSection) {
+      projexpSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="projects" className="min-h-screen px-6 py-16 text-white">
-      <h2 className="section-title text-center mb-12">Projects</h2>
+      <h2 className="section-title text-center mb-4">Projects</h2>
+      <div className="mx-auto w-64 h-0.5 bg-cyan-400 mb-12" />
       <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
         {projects.map((project, idx) => (
           <div
@@ -49,6 +67,14 @@ export default function Projects() {
           </div>
         ))}
       </div>
+    <div className="flex justify-center mt-10">
+        <button
+            onClick={scrollToPublications}
+            className="text-white text-3xl hover:text-gray-400 transition-transform hover:scale-110"
+        >
+            <FaChevronDown />
+        </button>
+    </div>
     </section>
   );
 }

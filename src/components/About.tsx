@@ -12,6 +12,7 @@ export default function About() {
   return (
     <section id='about' className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
       <h2 className="section-title mb-4">Hey there!</h2>
+      <div className="w-64 h-0.5 bg-cyan-400 mb-6" />
 
       <p className="section-subtitle max-w-3xl">
         I’m a software engineer with a passion for machine learning and mathematics, particularly graph theory and representation theory. 

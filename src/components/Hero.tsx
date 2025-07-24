@@ -2,6 +2,7 @@ import React from 'react';
 import { FaGithub, FaEnvelope, FaLinkedin, FaChevronDown } from 'react-icons/fa';
 import '../index.css';
 import profilePic from '../images/profilePic.jpeg';
+import NowPlaying from './NowPlaying';
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -40,6 +41,7 @@ export default function Hero() {
             <FaLinkedin />
           </a>
         </div>
+        <NowPlaying />
         <button onClick={scrollToAbout} className="mt-10 text-white text-3xl hover:text-gray-400 transition-transform hover:scale-110">
           <FaChevronDown />
         </button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import bg from '../images/noir.gif';
+import bg from '../images/mist.gif';
 
 export default function Background() {
   return (

@@ -55,7 +55,8 @@ export default function Experience() {
 
   return (
     <section id='experience' className="relative px-6 py-16">
-      <h2 className="section-title text-center mb-16 text-white">Experience</h2>
+      <h2 className="section-title text-center text-white mb-4">Experience</h2>
+        <div className="mx-auto w-64 h-0.5 bg-cyan-400 mb-12" />
       <div className="relative flex flex-col items-center">
         {/* Central Vertical Line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 h-[1200px] bg-cyan-400 z-0 animate-pulse-line" />
