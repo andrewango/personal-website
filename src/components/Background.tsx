@@ -39,7 +39,7 @@ export default function Background() {
       >
         <img
           src={bg2}
-          alt="underwater cave"
+          alt="underwater"
           className="w-full h-full object-cover"
         />
       </div>

@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-black bg-opacity-60 backdrop-blur-md z-50 px-10 py-5 flex justify-center items-center shadow-md text-base">
+    <nav className="fixed top-0 w-full bg-black bg-opacity-30 backdrop-blur-md z-50 px-10 py-5 flex justify-center items-center shadow-md text-base">
       <ul className="flex space-x-6 text-md font-medium">
         <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-gray-300 cursor-pointer">About Me</a></li>
         <li><a href="#experience" onClick={(e) => scrollToSection(e, 'experience')} className="hover:text-gray-300 cursor-pointer">Experience</a></li>
