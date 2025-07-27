@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
 export default function About() {
@@ -12,16 +12,34 @@ export default function About() {
     }
   };
 
-  return (
-    <section id='about' className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
-      <h2 className="section-title mb-4">Hey there!</h2>
-      <div className="w-64 h-0.5 bg-cyan-400 mb-6" />
+    const sectionRef = useRef<HTMLElement>(null);
+    const [visible, setVisible] = useState(false);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setVisible(true);
+        },
+        { threshold: 0.5 }
+      );
+      if (sectionRef.current) observer.observe(sectionRef.current);
+      return () => observer.disconnect();
+    }, []);
 
-      <p className="section-subtitle max-w-3xl">
-        I’m a software engineer with a passion for machine learning and mathematics, particularly graph theory and representation theory. 
+  return (
+    <section id='about' ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
+      <h2 className="section-title mb-4">Hey there!</h2>
+      <div
+        className={`h-0.5 bg-cyan-400 mb-12 transition-all duration-1000 ease-out origin-center ${
+          visible ? 'w-64 scale-x-100' : 'w-0 scale-x-0'
+        }`}
+      />
+
+      <p className="section-subtitle max-w-5xl">
+        I’m a software engineer with a passion for machine learning and mathematics, particularly spectral graph theory and representation theory. 
         <br></br>
         <br></br>
-        I graduated Cum Laude with a bachelor's degree in Applied Mathematics and Computer Science from the University of Delaware. 
+        I graduated Cum Laude with dual bachelor's degrees in Applied Mathematics and Computer Science from the University of Delaware. 
         <br></br>
         <br></br>
         When I'm not coding, I love lifting heavy weights, playing hockey, swimming, producing music, learning Ukrainian, and exploring nature.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaPython, FaReact, FaNodeJs, FaChevronDown } from 'react-icons/fa';
 
 const experiences = [
@@ -56,22 +56,40 @@ export default function Experience() {
     }
   };
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const [visible, setVisible] = useState(false);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setVisible(true);
+        },
+        { threshold: 0.5 }
+      );
+      if (sectionRef.current) observer.observe(sectionRef.current);
+      return () => observer.disconnect();
+    }, []);
+
   return (
-    <section id='experience' className="relative px-6 py-16">
+    <section id='experience' ref={sectionRef} className="relative px-6 py-16">
       <h2 className="section-title text-center text-white mb-4">Experience</h2>
-        <div className="mx-auto w-64 h-0.5 bg-cyan-400 mb-12" />
+      <div className=' flex justify-center'>
+        <div
+          className={`h-0.5 bg-cyan-400 mb-12 transition-all duration-1000 ease-out origin-center ${
+            visible ? 'w-64 scale-x-100' : 'w-0 scale-x-0'
+          }`}
+        />
+      </div>
+    
       <div className="relative flex flex-col items-center">
-        {/* Central Vertical Line */}
+        {/* Vertical Line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 h-[1200px] bg-cyan-400 z-0 animate-pulse-line" />
-
-
-
         {experiences.map((exp, i) => (
           <div
             key={i}
             className={`mb-24 w-full flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
           >
-            {/* Dot on the timeline */}
+            {/* Dot */}
             <span className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-cyan-400 rounded-full border-4 border-black z-10 " style={{ top: '2.25rem' }} />
 
             {/* Card */}

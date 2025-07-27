@@ -5,6 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
+// This sets the user to the top of the page on reload
+window.history.scrollRestoration = 'manual';
+window.onbeforeunload = () => {
+  window.scrollTo(0, 0);
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

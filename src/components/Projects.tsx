@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { FaGithub, FaChevronDown } from 'react-icons/fa';
 
 const projects = [
@@ -50,10 +50,30 @@ export default function Projects() {
     }
   };
 
+    const sectionRef = useRef<HTMLElement>(null);
+    const [visible, setVisible] = useState(false);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setVisible(true);
+        },
+        { threshold: 0.5 }
+      );
+      if (sectionRef.current) observer.observe(sectionRef.current);
+      return () => observer.disconnect();
+    }, []);
+
   return (
-    <section id="projects" className="min-h-screen px-6 py-16 text-white">
+    <section id="projects" ref={sectionRef} className="min-h-screen px-6 py-16 text-white">
       <h2 className="section-title text-center mb-4">Projects</h2>
-      <div className="mx-auto w-64 h-0.5 bg-cyan-400 mb-12" />
+      <div className='flex justify-center'>
+        <div
+        className={`h-0.5 bg-cyan-400 mb-12 transition-all duration-1000 ease-out origin-center ${
+          visible ? 'w-64 scale-x-100' : 'w-0 scale-x-0'
+        }`}
+      />
+      </div>
       <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
         {projects.map((project, idx) => (
           <div
