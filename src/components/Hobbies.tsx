@@ -128,7 +128,7 @@ export default function Hobbies() {
             In 2022, I took a break from music production to focus on my studies.
           </p>
         </>
-      ) : tab == 'powerlifting' ? (
+      ) : tab === 'powerlifting' ? (
         <>
           <ResponsiveContainer width="100%" height={400} className="max-w-4xl">
             <LineChart data={data}>
@@ -168,7 +168,7 @@ export default function Hobbies() {
             Currently, I'm improving my strength everyday in the 82.5kg weight class.
           </p>
         </>
-      ) : tab == 'ice hockey' ? (
+      ) : tab === 'ice hockey' ? (
 <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
   <p className="max-w-3xl mt-8 text-center text-white text-lg">
     I got into ice hockey in March 2024. I taught myself how to ice skate, occasionally play in beer league, and love watching the NHL. 
