@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaGithub, FaLink, FaChevronDown } from 'react-icons/fa';
+import { FaLink, FaChevronDown } from 'react-icons/fa';
 
 const projects = [
   {
