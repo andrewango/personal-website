@@ -20,7 +20,8 @@ const sampleData = [
   { month: 'Sep 24', Squat: 405, Bench: 225, Deadlift: 420 },
   { month: 'Feb 25', Squat: 405, Bench: 245, Deadlift: 420 },
   { month: 'Jun 25', Squat: 405, Bench: 245, Deadlift: 455 },
-  { month: 'Jul 25', Squat: 405, Bench: 245, Deadlift: 465 }
+  { month: 'Jul 25', Squat: 405, Bench: 245, Deadlift: 465 },
+  { month: 'Sept 25', Squat: 415, Bench: 245, Deadlift: 475 }
 ];
 
 const DigitRoll = ({ digit }: { digit: string }) => {
@@ -164,7 +165,7 @@ export default function Hobbies() {
           <p className="max-w-3xl mt-8 text-center text-white text-lg">
             I started powerlifting in 2023 and followed NSuns and Sheiko's programs before being coached by Veniamin Yovenko in Feb. 2025.
             <br /><br />
-            Currently, I'm self-coaching with everything I've learned and striving to improve my strength everyday in the 82.5kg weight class.
+            Currently, I'm improving my strength everyday in the 82.5kg weight class.
           </p>
         </>
       ) : tab == 'ice hockey' ? (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGithub, FaEnvelope, FaLinkedin, FaChevronDown } from 'react-icons/fa';
 import '../index.css';
-import profilePic from '../images/profilePic.jpg';
+import profilePic from '../images/profilePic.jpeg';
 import NowPlaying from './NowPlaying';
 
 export default function Hero() {
@@ -23,7 +23,7 @@ export default function Hero() {
           />
           <div className="text-left">
             <p className="section-subtitle mb-2 animate-fade-in-up transition-opacity duration-1000 ease-out">
-              Software Engineer • Math & Machine Learning
+              AI/ML Engineer • Math & Data Science
             </p>
             <h1 className="section-title mb-2 animate-fade-in-up transition-opacity duration-1000 ease-out">
               Andrew Ngo

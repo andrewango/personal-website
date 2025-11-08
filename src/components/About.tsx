@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <section id='about' ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
-      <h2 className="section-title mb-4">Hey there!</h2>
+      <h2 className="section-title mb-4">Howdy!</h2>
       <div
         className={`h-0.5 bg-cyan-400 mb-12 transition-all duration-1000 ease-out origin-center ${
           visible ? 'w-64 scale-x-100' : 'w-0 scale-x-0'
@@ -36,13 +36,13 @@ export default function About() {
       />
 
       <p className="section-subtitle max-w-5xl">
-        I’m a software engineer with a passion for machine learning and mathematics, particularly spectral graph theory and representation theory. 
+        I’m an AI/ML engineer with a passion for anything data science, machine learning, or mathematics-related, particularly spectral graph theory and representation theory. 
         <br></br>
         <br></br>
         I graduated Cum Laude with dual bachelor's degrees in Applied Mathematics and Computer Science from the University of Delaware. 
         <br></br>
         <br></br>
-        When I'm not coding, I love lifting heavy weights, playing hockey, swimming, producing music, learning Ukrainian, and exploring nature.
+        When I'm not coding or studying, I love lifting heavy weights, playing hockey, swimming, producing music, learning Ukrainian, and exploring nature.
       </p>
         <button onClick={scrollToExperience} className="mt-10 text-white text-3xl hover:text-gray-400 transition-transform hover:scale-110">
         <FaChevronDown />

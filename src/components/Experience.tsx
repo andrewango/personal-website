@@ -2,8 +2,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaPython, FaReact, FaNodeJs, FaChevronDown } from 'react-icons/fa';
 
 const experiences = [
+    {
+    title: 'Research Collaborator',
+    company: 'NASA',
+    date: 'Nov. 2025 – Present',
+    description: 'Global Solar Activity',
+    tech: ['Python', 'TensorFlow', 'Computer Vision', 'Astrophysics'],
+    logo: '/logos/nasa.png',
+  },
+    {
+    title: 'Machine Learning Engineer',
+    company: 'Beacon Industries',
+    date: 'Sept. 2025 – Present',
+    description: 'AI/ML R&D in Aerospace and Defense',
+    tech: ['Python', 'TypeScript', 'AWS', 'PyTorch', 'TensorFlow', 'RAG', 'Reinforcement Learning', 'Computer Vision'],
+    logo: '',
+  },
   {
-    title: 'Research Engineer Intern',
+    title: 'Student Researcher',
     company: 'University of Delaware',
     date: 'Sept. 2024 – May 2025',
     description: 'Deep Reinforcement Learning in Extremal Combinatorics',
@@ -11,7 +27,7 @@ const experiences = [
     logo: '/logos/udel.png',
   },
 {
-    title: 'Teaching Assistant',
+    title: 'Teaching Assistant / Proctor',
     company: 'University of Delaware',
     date: 'Sept. 2022 – Dec. 2024',
     description: 'Data Structures, Systems Programming, Logic, Calculus I',
@@ -19,15 +35,15 @@ const experiences = [
     logo: '/logos/udel.png',
   },
   {
-    title: 'ML/Software Engineer Intern',
+    title: 'Data Scientist Intern',
     company: 'NASA',
     date: 'June 2024 – Aug. 2024',
     description: 'Solar Limb Stabilization, Polar Region Analysis',
-    tech: ['Python', 'Tensorflow', 'Docker', 'Pandas', 'NumPy', 'AstroPy', 'Git'],
+    tech: ['Python', 'TensorFlow', 'Docker', 'Pandas', 'NumPy', 'AstroPy', 'Git'],
     logo: '/logos/nasa.png',
   },
   {
-    title: 'Research Engineer Intern',
+    title: 'Machine Learning Engineer Intern',
     company: 'Sensify Lab',
     date: 'Sept. 2023 – May 2024',
     description: 'Mental Health App Classification, Depression and Anxiety Prediction',
@@ -35,11 +51,11 @@ const experiences = [
     logo: '/logos/sensify.png',
   },
     {
-    title: 'ML/Software Engineer Intern',
+    title: 'Data Scientist / Software Engineer Intern',
     company: 'NASA',
     date: 'June 2023 – Aug. 2023',
     description: 'Supergranule Segmentation, Global Solar Activity Data Portal',
-    tech: ['Python', 'JavaScript', 'MySQL', 'Tensorflow', 'OpenCV', 'Pandas', 'AstroPy', 'Git'],
+    tech: ['Python', 'JavaScript', 'MySQL', 'TensorFlow', 'OpenCV', 'Pandas', 'AstroPy', 'Git'],
     logo: '/logos/nasa.png',
   }
   
@@ -83,7 +99,7 @@ export default function Experience() {
     
       <div className="relative flex flex-col items-center">
         {/* Vertical Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 h-[1200px] bg-cyan-400 z-0 animate-pulse-line" />
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 h-[1700px] bg-cyan-400 z-0 animate-pulse-line" />
         {experiences.map((exp, i) => (
           <div
             key={i}

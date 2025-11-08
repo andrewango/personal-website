@@ -34,11 +34,6 @@ const projects = [
     title: 'Tweet Spam Detector',
     description: 'Training classification models to detect spam on Twitter.',
     github: 'https://github.com/andrewango/tweet_spam_detector'
-  },
-  {
-    title: 'Mathnasium Employee Scheduler (Unfinished)',
-    description: 'A scheduling system for a Mathnasium center I work at!',
-    github: 'https://github.com/andrewango/'
   }
 ];
 
@@ -97,7 +92,7 @@ export default function Projects() {
       >
         {projects.map((project, idx) => (
           <SwiperSlide key={idx}>
-              <div className="relative bg-white/10 backdrop-blur-md border border-cyan-700 rounded-xl shadow-lg p-8 min-h-[300px] w-[400px] flex flex-col justify-between transition-transform duration-300 hover:scale-110 hover:z-10 hover:border-cyan-400">
+              <div className="relative bg-white/10 backdrop-blur-md border border-cyan-700 rounded-xl shadow-lg p-8 min-h-[300px] w-[400px] flex flex-col justify-between transition-transform duration-300 hover:scale-100 hover:z-10 hover:border-cyan-400">
 
               <div>
                 <h3 className="text-xl font-bold text-cyan-400 mb-2">{project.title}</h3>
