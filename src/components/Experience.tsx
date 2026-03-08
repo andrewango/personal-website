@@ -7,8 +7,16 @@ const experiences = [
     company: 'NASA',
     date: 'Nov. 2025 – Present',
     description: 'Global Solar Activity',
-    tech: ['Python', 'TensorFlow', 'Computer Vision', 'Astrophysics'],
+    tech: ['Python', 'PyTorch', 'Computer Vision', 'Object Tracking', 'Astrophysics'],
     logo: '/logos/nasa.png',
+  },
+      {
+    title: 'Cybersecurity Lead',
+    company: 'Beacon Industries',
+    date: 'Nov. 2025 – Present',
+    description: 'CMMC Level 2 Compliance',
+    tech: ['Data Governance', 'Azure Cloud', 'Networking', 'Identity Management', 'Incident Response'],
+    logo: '',
   },
     {
     title: 'Machine Learning Engineer',
@@ -19,7 +27,7 @@ const experiences = [
     logo: '',
   },
   {
-    title: 'Student Researcher',
+    title: 'Student AI Researcher',
     company: 'University of Delaware',
     date: 'Sept. 2024 – May 2025',
     description: 'Deep Reinforcement Learning in Extremal Combinatorics',
@@ -27,7 +35,7 @@ const experiences = [
     logo: '/logos/udel.png',
   },
 {
-    title: 'Teaching Assistant / Proctor',
+    title: 'Teaching Assistant & Proctor',
     company: 'University of Delaware',
     date: 'Sept. 2022 – Dec. 2024',
     description: 'Data Structures, Systems Programming, Logic, Calculus I',
@@ -51,11 +59,11 @@ const experiences = [
     logo: '/logos/sensify.png',
   },
     {
-    title: 'Data Scientist / Software Engineer Intern',
+    title: 'Data Scientist Intern',
     company: 'NASA',
     date: 'June 2023 – Aug. 2023',
     description: 'Supergranule Segmentation, Global Solar Activity Data Portal',
-    tech: ['Python', 'JavaScript', 'MySQL', 'TensorFlow', 'OpenCV', 'Pandas', 'AstroPy', 'Git'],
+    tech: ['Python', 'TensorFlow', 'OpenCV', 'Pandas', 'AstroPy', 'Git'],
     logo: '/logos/nasa.png',
   }
   
@@ -110,7 +118,7 @@ export default function Experience() {
 
             {/* Card */}
             <div
-              className={`transition-transform duration-300 hover:scale-105 bg-black/75 backdrop-blur-md p-6 rounded-xl border border-cyan-700 hover:border-cyan-400 text-white shadow-lg max-w-4xl z-10 ${
+              className={`transition-transform duration-300 hover:scale-105 bg-black/30 backdrop-blur-md p-6 rounded-xl border border-cyan-700 hover:border-cyan-400 text-white shadow-lg max-w-4xl z-10 ${
                 i % 2 === 0 ? 'ml-[48%]' : 'mr-[48%]'
               }`}
             >

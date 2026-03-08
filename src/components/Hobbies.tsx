@@ -21,7 +21,8 @@ const sampleData = [
   { month: 'Feb 25', Squat: 405, Bench: 245, Deadlift: 420 },
   { month: 'Jun 25', Squat: 405, Bench: 245, Deadlift: 455 },
   { month: 'Jul 25', Squat: 405, Bench: 245, Deadlift: 465 },
-  { month: 'Sept 25', Squat: 415, Bench: 245, Deadlift: 475 }
+  { month: 'Sep 25', Squat: 415, Bench: 245, Deadlift: 475 },
+  { month: 'Mar 25', Squat: 420, Bench: 245, Deadlift: 475 }
 ];
 
 const DigitRoll = ({ digit }: { digit: string }) => {

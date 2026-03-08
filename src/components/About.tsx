@@ -36,13 +36,13 @@ export default function About() {
       />
 
       <p className="section-subtitle max-w-5xl">
-        I’m an AI/ML engineer with a passion for anything data science, machine learning, or mathematics-related, particularly spectral graph theory and representation theory. 
+        I’m an AI/ML engineer with a passion for anything data science, machine learning, or mathematics-related. 
         <br></br>
         <br></br>
         I graduated Cum Laude with dual bachelor's degrees in Applied Mathematics and Computer Science from the University of Delaware. 
         <br></br>
         <br></br>
-        When I'm not coding or studying, I love lifting heavy weights, playing hockey, swimming, producing music, learning Ukrainian, and exploring nature.
+        When I'm not coding or studying, I love lifting heavy weights, playing hockey, swimming, running, producing music, learning Ukrainian, and exploring nature.
       </p>
         <button onClick={scrollToExperience} className="mt-10 text-white text-3xl hover:text-gray-400 transition-transform hover:scale-110">
         <FaChevronDown />

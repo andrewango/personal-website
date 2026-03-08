@@ -24,7 +24,7 @@ function App() {
       <Hobbies />
 
       <footer className="py-6 text-center text-sm text-white/50">
-        &copy; Andrew Ngo 2025
+        &copy; Andrew Ngo 2026
       </footer>
     </div>
   );
