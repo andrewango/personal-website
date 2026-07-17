@@ -129,15 +129,15 @@ export default function Experience() {
           return (
             <div
               key={experience.id}
-              className="relative mb-8 grid w-full grid-cols-1 pl-10 md:grid-cols-[minmax(0,1fr)_minmax(24rem,1.18fr)_4rem_minmax(24rem,1.18fr)_minmax(0,1fr)] md:items-start md:gap-0 md:pl-0"
+              className="relative mb-5 grid w-full grid-cols-1 pl-8 md:mb-8 md:grid-cols-[minmax(0,1fr)_minmax(24rem,1.18fr)_4rem_minmax(24rem,1.18fr)_minmax(0,1fr)] md:items-start md:gap-0 md:pl-0"
             >
               <span
-                className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-cyan-400 rounded-full border-4 border-[#05070f] z-10"
-                style={{ top: '2.5rem' }}
+                className="absolute left-0 md:left-1/2 transform -translate-x-1/2 h-4 w-4 rounded-full border-[3px] border-[#05070f] bg-cyan-400 z-10 md:h-5 md:w-5 md:border-4"
+                style={{ top: '2rem' }}
               />
 
               <article
-                className={`relative z-10 flex min-h-[13rem] w-full flex-col rounded-lg border border-cyan-700/70 bg-[#07111f]/78 p-8 text-white shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-[1.01] hover:border-cyan-300 md:h-[13rem] ${
+                className={`relative z-10 flex min-h-[9rem] w-full flex-col rounded-lg border border-cyan-700/70 bg-[#07111f]/78 p-5 text-white shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-[1.01] hover:border-cyan-300 md:h-[11rem] md:min-h-[11rem] md:p-7 ${
                   isLeftSide ? 'md:col-start-2 md:row-start-1' : 'md:col-start-4 md:row-start-1'
                 }`}
               >
@@ -190,39 +190,39 @@ export default function Experience() {
                   aria-expanded={isExpanded}
                   aria-controls={detailPanelId}
                   aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${experience.company} details`}
-                  className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/80 bg-[#05070f]/95 text-cyan-300 shadow-lg transition hover:border-cyan-200 hover:text-cyan-100 md:hidden"
+                  className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-cyan-400/80 bg-[#05070f]/95 text-sm text-cyan-300 shadow-lg transition hover:border-cyan-200 hover:text-cyan-100 md:hidden"
                 >
                   <FaChevronDown className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                 </button>
 
                 <div className="flex h-full flex-col justify-start">
                   <div>
-                    <h3 className="flex min-h-[4.6rem] items-start text-3xl font-bold leading-tight text-cyan-300">
+                    <h3 className="flex min-h-[2.9rem] items-start pr-9 text-xl font-bold leading-tight text-cyan-300 md:min-h-[3.9rem] md:pr-0 md:text-[1.6rem]">
                       {experience.title}
                     </h3>
-                    <p className="mt-2 text-2xl text-white">{experience.company}</p>
-                    <p className="mt-3 whitespace-nowrap text-lg text-white/70">{experience.date}</p>
+                    <p className="mt-1.5 text-lg text-white md:mt-2 md:text-[1.25rem]">{experience.company}</p>
+                    <p className="mt-2 whitespace-nowrap text-sm text-white/70 md:mt-2 md:text-[0.95rem]">{experience.date}</p>
                   </div>
                 </div>
 
                 <div
                   id={detailPanelId}
                   className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out md:hidden ${
-                    isExpanded ? 'grid-rows-[1fr] opacity-100 mt-8' : 'grid-rows-[0fr] opacity-0 mt-0'
+                    isExpanded ? 'grid-rows-[1fr] opacity-100 mt-5' : 'grid-rows-[0fr] opacity-0 mt-0'
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="border-t border-cyan-400/25 pt-6">
-                      <ul className="space-y-3 text-lg leading-relaxed text-white/85">
+                    <div className="border-t border-cyan-400/25 pt-4">
+                      <ul className="space-y-2 text-sm leading-relaxed text-white/85">
                         {experience.details.map((detail) => (
                           <li key={detail}>{detail}</li>
                         ))}
                       </ul>
-                      <div className="mt-6 flex flex-wrap gap-2">
+                      <div className="mt-4 flex flex-wrap gap-1.5">
                         {experience.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="bg-cyan-500/20 border border-cyan-400 text-cyan-300 text-sm font-medium px-3 py-1 rounded hover:bg-cyan-400/40"
+                            className="bg-cyan-500/20 border border-cyan-400 text-cyan-300 text-xs font-medium px-2 py-1 rounded hover:bg-cyan-400/40"
                           >
                             {tech}
                           </span>

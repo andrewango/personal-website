@@ -97,6 +97,11 @@ body {
   .page-section {
     padding: 4rem 1.5rem;
   }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

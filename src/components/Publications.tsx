@@ -54,23 +54,23 @@ export default function Publications() {
     <SectionShell id="publications" ref={sectionRef}>
       <SectionHeader title="Publications" visible={visible} />
 
-      <div className="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-7xl mx-auto">
+      <div className="grid max-w-7xl grid-cols-2 gap-4 mx-auto md:gap-12">
         {publications.map((publication) => (
           <div
             key={publication.url}
-            className="flex min-h-[260px] flex-col justify-between rounded-lg border border-cyan-700/70 bg-[#07111f]/78 p-8 text-white shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-[1.01] hover:border-cyan-300"
+            className="flex min-h-[9rem] flex-col justify-between rounded-lg border border-cyan-700/70 bg-[#07111f]/78 p-4 text-white shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-[1.01] hover:border-cyan-300 md:min-h-[13.75rem] md:p-7"
           >
             <div>
-              <h3 className="text-3xl font-bold text-cyan-300 mb-4">{publication.title}</h3>
-              <p className="text-gray-200 text-lg mb-6">{publication.description}</p>
+              <h3 className="mb-2 text-sm font-bold leading-tight text-cyan-300 md:mb-3 md:text-[1.6rem]">{publication.title}</h3>
+              <p className="mb-3 text-xs text-gray-200 md:mb-5 md:text-[0.95rem]">{publication.description}</p>
             </div>
             <a
               href={publication.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-lg text-cyan-300 hover:text-cyan-100"
+              className="mt-2 inline-flex items-center gap-1.5 text-xs text-cyan-300 hover:text-cyan-100 md:mt-3 md:gap-2 md:text-[0.95rem]"
             >
-              <FaLink className="text-lg" /> View Publication
+              <FaLink className="text-xs md:text-[0.95rem]" /> View
             </a>
           </div>
         ))}

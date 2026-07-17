@@ -78,7 +78,7 @@ function CountUpNumber({ target, suffix = '', visible }: CountUpNumberProps) {
     return () => window.cancelAnimationFrame(animationFrame);
   }, [target, visible]);
 
-  return <div className="text-5xl sm:text-7xl font-bold text-cyan-400">{formatCompactCount(currentValue, suffix)}</div>;
+  return <div className="text-4xl font-bold text-cyan-400 sm:text-7xl">{formatCompactCount(currentValue, suffix)}</div>;
 }
 
 export default function Hobbies() {
@@ -108,16 +108,16 @@ export default function Hobbies() {
     <SectionShell id="hobbies" ref={sectionRef} centered>
       <SectionHeader title="Hobbies" visible={visible} />
 
-      <div className="flex border-b border-cyan-400 mb-12">
+      <div className="mb-8 grid w-full max-w-xl grid-cols-2 border border-cyan-400 sm:mb-12 sm:flex sm:w-auto sm:max-w-none sm:border-b sm:border-l-0 sm:border-r-0 sm:border-t-0">
         {hobbyTabs.map((currentTab) => (
           <button
             key={currentTab}
             onClick={() => setTab(currentTab)}
-            className={`px-8 py-4 text-lg transition-all relative ${
+            className={`relative px-3 py-3 text-sm transition-all sm:px-8 sm:py-4 sm:text-lg ${
               tab === currentTab ? 'text-cyan-400' : 'text-white'
-            } ${
-              currentTab !== 'snowboarding' ? 'border-r border-cyan-400' : ''
-            } hover:text-cyan-300 hover:shadow-[0_0_10px_2px_rgba(0,255,255,0.3)] rounded`}
+            } ${currentTab === 'music' || currentTab === 'ice hockey' ? 'border-r border-cyan-400' : ''} ${
+              currentTab === 'music' || currentTab === 'powerlifting' ? 'border-b border-cyan-400 sm:border-b-0' : ''
+            } ${currentTab !== 'snowboarding' ? 'sm:border-r sm:border-cyan-400' : ''} hover:text-cyan-300 hover:shadow-[0_0_10px_2px_rgba(0,255,255,0.3)] sm:rounded`}
           >
             {currentTab.charAt(0).toUpperCase() + currentTab.slice(1)}
           </button>
@@ -126,21 +126,21 @@ export default function Hobbies() {
 
       {tab === 'music' ? (
         <>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
+          <div className="flex flex-row flex-wrap justify-center items-center gap-6 text-center sm:gap-12">
             <div>
               <CountUpNumber target={3_000_000} suffix="M+" visible={visible} />
-              <p className="text-gray-300 text-base mt-2">streams</p>
+              <p className="text-gray-300 text-xs mt-1 sm:text-base sm:mt-2">streams</p>
             </div>
             <div>
               <CountUpNumber target={100_000} suffix="K+" visible={visible} />
-              <p className="text-gray-300 text-base mt-2">listeners</p>
+              <p className="text-gray-300 text-xs mt-1 sm:text-base sm:mt-2">listeners</p>
             </div>
             <div>
               <CountUpNumber target={100} suffix="+" visible={visible} />
-              <p className="text-gray-300 text-base mt-2">countries</p>
+              <p className="text-gray-300 text-xs mt-1 sm:text-base sm:mt-2">countries</p>
             </div>
           </div>
-          <p className="section-body max-w-5xl mt-10 text-center">
+          <p className="section-body max-w-5xl mt-7 text-center sm:mt-10">
             I began producing music in 2016, starting with wave and hip hop/RnB. I made a name for myself in two large
             underground scenes, one inspired by Bladee and Yung Lean, the other by emo, punk, alt rock, and trap. I was
             also a member of an underground collective called Ghost Network. As my interests expanded, I learned how to
@@ -157,39 +157,41 @@ export default function Hobbies() {
         </>
       ) : tab === 'powerlifting' ? (
         <>
-          <ResponsiveContainer width="100%" height={480} className="max-w-6xl">
-            <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#888" />
-              <XAxis dataKey="month" stroke="#ccc" />
-              <YAxis stroke="#ccc" />
-              <Tooltip contentStyle={{ backgroundColor: '#111', borderColor: '#00ffff' }} />
-              <Line
-                type="monotone"
-                dataKey="Squat"
-                stroke="#00FFFF"
-                strokeWidth={3}
-                dot={{ r: 4 }}
-                isAnimationActive={visible}
-              />
-              <Line
-                type="monotone"
-                dataKey="Bench"
-                stroke="#FF00FF"
-                strokeWidth={3}
-                dot={{ r: 4 }}
-                isAnimationActive={visible}
-              />
-              <Line
-                type="monotone"
-                dataKey="Deadlift"
-                stroke="#FFFF00"
-                strokeWidth={3}
-                dot={{ r: 4 }}
-                isAnimationActive={visible}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-          <p className="section-body max-w-5xl mt-10 text-center">
+          <div className="h-[300px] w-full max-w-6xl sm:h-[480px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#888" />
+                <XAxis dataKey="month" stroke="#ccc" />
+                <YAxis stroke="#ccc" />
+                <Tooltip contentStyle={{ backgroundColor: '#111', borderColor: '#00ffff' }} />
+                <Line
+                  type="monotone"
+                  dataKey="Squat"
+                  stroke="#00FFFF"
+                  strokeWidth={3}
+                  dot={{ r: 4 }}
+                  isAnimationActive={visible}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Bench"
+                  stroke="#FF00FF"
+                  strokeWidth={3}
+                  dot={{ r: 4 }}
+                  isAnimationActive={visible}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Deadlift"
+                  stroke="#FFFF00"
+                  strokeWidth={3}
+                  dot={{ r: 4 }}
+                  isAnimationActive={visible}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          <p className="section-body max-w-5xl mt-7 text-center sm:mt-10">
             I started powerlifting in 2023 and followed NSuns and Sheiko's programs before being coached by Veniamin
             Yovenko in Feb. 2025.
             <br />
@@ -199,7 +201,7 @@ export default function Hobbies() {
         </>
       ) : tab === 'ice hockey' ? (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-          <p className="section-body max-w-5xl mt-10 text-center">
+          <p className="section-body max-w-5xl mt-7 text-center sm:mt-10">
             I got into ice hockey in March 2024. I taught myself how to ice skate, occasionally play in beer league,
             and love watching the NHL.
             <br />
@@ -209,7 +211,7 @@ export default function Hobbies() {
         </div>
       ) : (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-          <p className="section-body max-w-5xl mt-10 text-center">
+          <p className="section-body max-w-5xl mt-7 text-center sm:mt-10">
             I've snowboarded in Pennsylvania, Vermont, West Virginia, and Maryland. My dream spots are Colorado and the
             French Alps.
           </p>
