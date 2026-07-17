@@ -1,15 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  LineChart,
+  CartesianGrid,
   Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
 } from 'recharts';
+import { SectionHeader, SectionShell } from './Section';
 
-const sampleData = [
+type HobbyTab = 'music' | 'powerlifting' | 'ice hockey' | 'snowboarding';
+
+type LiftDataPoint = {
+  month: string;
+  Squat: number;
+  Bench: number;
+  Deadlift: number;
+};
+
+type CountUpNumberProps = {
+  target: number;
+  suffix?: string;
+  visible: boolean;
+};
+
+const hobbyTabs: HobbyTab[] = ['music', 'powerlifting', 'ice hockey', 'snowboarding'];
+
+const liftData: LiftDataPoint[] = [
   { month: 'Feb 23', Squat: 215, Bench: 175, Deadlift: 245 },
   { month: 'Jun 23', Squat: 265, Bench: 205, Deadlift: 275 },
   { month: 'Aug 23', Squat: 285, Bench: 205, Deadlift: 315 },
@@ -22,83 +40,86 @@ const sampleData = [
   { month: 'Jun 25', Squat: 405, Bench: 245, Deadlift: 455 },
   { month: 'Jul 25', Squat: 405, Bench: 245, Deadlift: 465 },
   { month: 'Sep 25', Squat: 415, Bench: 245, Deadlift: 475 },
-  { month: 'Mar 25', Squat: 420, Bench: 245, Deadlift: 475 }
+  { month: 'Mar 26', Squat: 420, Bench: 245, Deadlift: 475 },
 ];
 
-const DigitRoll = ({ digit }: { digit: string }) => {
-  return isNaN(Number(digit)) ? (
-    <span className="inline-block w-[1ch] text-cyan-400">{digit}</span>
-  ) : (
-    <div className="inline-block h-[3.5rem] overflow-hidden w-[1ch]">
-      <div
-        className="transition-transform duration-700 ease-out text-cyan-400"
-        style={{ transform: `translateY(-${Number(digit) * 3.5}rem)` }}
-      >
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
-          <div key={n} className="h-[3.5rem] flex items-center justify-center">
-            {n}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+function formatCompactCount(value: number, suffix = '') {
+  if (suffix === 'M+') return `${Math.floor(value / 1_000_000)}M+`;
+  if (suffix === 'K+') return `${Math.floor(value / 1_000)}K+`;
+  return `${Math.floor(value)}${suffix}`;
+}
 
-const ScrollUpNumber = ({ number }: { number: string }) => {
-  return (
-    <div className="flex justify-center text-4xl sm:text-6xl font-bold h-[3.5rem]">
-      {number.split('').map((char, i) => (
-        <DigitRoll key={i} digit={char} />
-      ))}
-    </div>
-  );
-};
+function CountUpNumber({ target, suffix = '', visible }: CountUpNumberProps) {
+  const [currentValue, setCurrentValue] = useState(0);
+
+  useEffect(() => {
+    if (!visible) {
+      setCurrentValue(0);
+      return;
+    }
+
+    const durationMs = 1100;
+    const startTime = performance.now();
+    let animationFrame = 0;
+
+    const updateCount = (timestamp: number) => {
+      const elapsedRatio = Math.min((timestamp - startTime) / durationMs, 1);
+      const easedProgress = 1 - Math.pow(1 - elapsedRatio, 3);
+
+      setCurrentValue(target * easedProgress);
+
+      if (elapsedRatio < 1) {
+        animationFrame = window.requestAnimationFrame(updateCount);
+      }
+    };
+
+    animationFrame = window.requestAnimationFrame(updateCount);
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [target, visible]);
+
+  return <div className="text-5xl sm:text-7xl font-bold text-cyan-400">{formatCompactCount(currentValue, suffix)}</div>;
+}
 
 export default function Hobbies() {
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
-  const [tab, setTab] = useState<'music' | 'powerlifting' | 'ice hockey' | 'snowboarding'>('music');
-  const [data, setData] = useState<any[]>([]);
+  const [tab, setTab] = useState<HobbyTab>('music');
+  const [chartData, setChartData] = useState<LiftDataPoint[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          if (data.length === 0) {
-            setTimeout(() => setData(sampleData), 100);
-          }
+        if (!entry.isIntersecting) return;
+
+        setVisible(true);
+        if (chartData.length === 0) {
+          window.setTimeout(() => setChartData(liftData), 100);
         }
       },
       { threshold: 0.4 }
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [data]);
+  }, [chartData.length]);
 
   return (
-    <section
-      id="hobbies"
-      ref={sectionRef}
-      className="min-h-screen px-6 py-16 text-white flex flex-col justify-center items-center"
-    >
-      <h2 className="section-title mb-4 text-center">Hobbies</h2>
-      <div
-        className={`h-0.5 bg-cyan-400 mb-12 transition-all duration-1000 ease-out origin-center ${
-          visible ? 'w-64 scale-x-100' : 'w-0 scale-x-0'
-        }`}
-      />
+    <SectionShell id="hobbies" ref={sectionRef} centered>
+      <SectionHeader title="Hobbies" visible={visible} />
 
-      <div className="flex border-b border-cyan-400 mb-10">
-        {['music', 'powerlifting', 'ice hockey', 'snowboarding'].map((t) => (
+      <div className="flex border-b border-cyan-400 mb-12">
+        {hobbyTabs.map((currentTab) => (
           <button
-            key={t}
-            onClick={() => setTab(t as any)}
-            className={`px-4 py-2 text-sm transition-all relative ${
-              tab === t ? 'text-cyan-400' : 'text-white'
-            } ${t !== 'snowboarding' ? 'border-r border-cyan-400' : ''} hover:text-cyan-300 hover:shadow-[0_0_10px_2px_rgba(0,255,255,0.3)] rounded`}
+            key={currentTab}
+            onClick={() => setTab(currentTab)}
+            className={`px-8 py-4 text-lg transition-all relative ${
+              tab === currentTab ? 'text-cyan-400' : 'text-white'
+            } ${
+              currentTab !== 'snowboarding' ? 'border-r border-cyan-400' : ''
+            } hover:text-cyan-300 hover:shadow-[0_0_10px_2px_rgba(0,255,255,0.3)] rounded`}
           >
-            {t.charAt(0).toUpperCase() + t.slice(1)}
+            {currentTab.charAt(0).toUpperCase() + currentTab.slice(1)}
           </button>
         ))}
       </div>
@@ -107,32 +128,37 @@ export default function Hobbies() {
         <>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
             <div>
-              {visible && <ScrollUpNumber number="3M+" />}
-              <p className="text-gray-300 text-sm mt-1">streams</p>
+              <CountUpNumber target={3_000_000} suffix="M+" visible={visible} />
+              <p className="text-gray-300 text-base mt-2">streams</p>
             </div>
             <div>
-              {visible && <ScrollUpNumber number="100K+" />}
-              <p className="text-gray-300 text-sm mt-1">listeners</p>
+              <CountUpNumber target={100_000} suffix="K+" visible={visible} />
+              <p className="text-gray-300 text-base mt-2">listeners</p>
             </div>
             <div>
-              {visible && <ScrollUpNumber number="100+" />}
-              <p className="text-gray-300 text-sm mt-1">countries</p>
+              <CountUpNumber target={100} suffix="+" visible={visible} />
+              <p className="text-gray-300 text-base mt-2">countries</p>
             </div>
           </div>
-          <p className="max-w-3xl mt-8 text-center text-white text-lg">
-            I began producing music in 2016, starting with wave and hip hop/RnB. I made a name for myself in two large underground scenes—one inspired by Bladee and Yung Lean,
-            the other by emo, punk, alt rock, and trap. I was also a member of an underground collective called Ghost Network. As my interests expanded, I learned how to produce rock, metal, pop/K-pop, and EDM instrumentals.
-            I've also taught two close friends how to produce—one of which has made a name for himself in his own scene.
-            <br /><br />
-            I've collaborated with many artists across the world, including glaive, onlyfriend, d1v, Nosgov, Days to Waste, and OUTHR.
-            <br /><br />
+          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+            I began producing music in 2016, starting with wave and hip hop/RnB. I made a name for myself in two large
+            underground scenes, one inspired by Bladee and Yung Lean, the other by emo, punk, alt rock, and trap. I was
+            also a member of an underground collective called Ghost Network. As my interests expanded, I learned how to
+            produce rock, metal, pop/K-pop, and EDM instrumentals. I've also taught two close friends how to produce,
+            one of whom has made a name for himself in his own scene.
+            <br />
+            <br />
+            I've collaborated with many artists across the world, including glaive, onlyfriend, d1v, Nosgov, Days to
+            Waste, and OUTHR.
+            <br />
+            <br />
             In 2022, I took a break from music production to focus on my studies.
           </p>
         </>
       ) : tab === 'powerlifting' ? (
         <>
-          <ResponsiveContainer width="100%" height={400} className="max-w-4xl">
-            <LineChart data={data}>
+          <ResponsiveContainer width="100%" height={480} className="max-w-6xl">
+            <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#888" />
               <XAxis dataKey="month" stroke="#ccc" />
               <YAxis stroke="#ccc" />
@@ -163,30 +189,32 @@ export default function Hobbies() {
               />
             </LineChart>
           </ResponsiveContainer>
-          <p className="max-w-3xl mt-8 text-center text-white text-lg">
-            I started powerlifting in 2023 and followed NSuns and Sheiko's programs before being coached by Veniamin Yovenko in Feb. 2025.
-            <br /><br />
+          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+            I started powerlifting in 2023 and followed NSuns and Sheiko's programs before being coached by Veniamin
+            Yovenko in Feb. 2025.
+            <br />
+            <br />
             Currently, I'm improving my strength everyday in the 82.5kg weight class.
           </p>
         </>
       ) : tab === 'ice hockey' ? (
-<div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-  <p className="max-w-3xl mt-8 text-center text-white text-lg">
-    I got into ice hockey in March 2024. I taught myself how to ice skate, occasionally play in beer league, and love watching the NHL. 
-    <br></br>
-    <br></br>
-    My usual position is defenseman and my favorite player is Cale Makar!
-    </p>
-</div>
-
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
+          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+            I got into ice hockey in March 2024. I taught myself how to ice skate, occasionally play in beer league,
+            and love watching the NHL.
+            <br />
+            <br />
+            My usual position is defenseman and my favorite player is Cale Makar.
+          </p>
+        </div>
       ) : (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-          <p className="max-w-3xl mt-8 text-center text-white text-lg">
-    I've snowboarded in Pennsylvania, Vermont, West Virginia, and Maryland. My dream spots are Colorado and the French Alps.
-            </p>
+          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+            I've snowboarded in Pennsylvania, Vermont, West Virginia, and Maryland. My dream spots are Colorado and the
+            French Alps.
+          </p>
         </div>
-
       )}
-    </section>
+    </SectionShell>
   );
 }

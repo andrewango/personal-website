@@ -1,48 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import bg from '../images/ocean.gif';
-import bg2 from '../images/underwater.gif';
+
+const launchVideoUrl = `${process.env.PUBLIC_URL}/videos/SpaceX_Dragon_CRS16.mp4`;
+
+function isPastHeroMidpoint(): boolean {
+  const heroSection = document.getElementById('hero');
+
+  if (!heroSection) {
+    return false;
+  }
+
+  const heroBounds = heroSection.getBoundingClientRect();
+  return heroBounds.top + heroBounds.height / 2 < 0;
+}
 
 export default function Background() {
-  const [isPastHero, setIsPastHero] = useState(false);
+  const [isHeroBackgroundVisible, setIsHeroBackgroundVisible] = useState(true);
 
   useEffect(() => {
-    const heroSection = document.getElementById('hero');
-
-    const handleScroll = () => {
-      if (!heroSection) return;
-      const rect = heroSection.getBoundingClientRect();
-      setIsPastHero(rect.top + (rect.height / 2) < 0);;
+    const updateBackgroundVisibility = () => {
+      setIsHeroBackgroundVisible(!isPastHeroMidpoint());
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateBackgroundVisibility();
+    window.addEventListener('scroll', updateBackgroundVisibility, { passive: true });
+    window.addEventListener('resize', updateBackgroundVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', updateBackgroundVisibility);
+      window.removeEventListener('resize', updateBackgroundVisibility);
+    };
   }, []);
 
   return (
-    <>
-      <div
-        className={`fixed top-0 left-0 w-full h-full -z-20 transition-opacity duration-500 ease-in-out ${
-          isPastHero ? 'opacity-0' : 'opacity-50'
-        } blur-md overflow-hidden`}
-      >
-        <img
-          src={bg}
-          alt="background"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <div
-        className={`fixed top-0 left-0 w-full h-full -z-30 transition-opacity duration-500 ease-in-out ${
-          isPastHero ? 'opacity-50' : 'opacity-0'
-        } blur-md overflow-hidden`}
-      >
-        <img
-          src={bg2}
-          alt="underwater"
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </>
+    <div
+      className={`fixed inset-0 -z-20 overflow-hidden bg-[#05070f] transition-opacity duration-500 ease-in-out ${
+        isHeroBackgroundVisible ? 'opacity-70' : 'opacity-10'
+      }`}
+      aria-hidden="true"
+    >
+      <video
+        className="h-full w-full object-cover"
+        src={launchVideoUrl}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+      <div className="absolute inset-0 bg-slate-950/25" />
+    </div>
   );
 }
