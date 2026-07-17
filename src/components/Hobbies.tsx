@@ -140,7 +140,7 @@ export default function Hobbies() {
               <p className="text-gray-300 text-base mt-2">countries</p>
             </div>
           </div>
-          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+          <p className="section-body max-w-5xl mt-10 text-center">
             I began producing music in 2016, starting with wave and hip hop/RnB. I made a name for myself in two large
             underground scenes, one inspired by Bladee and Yung Lean, the other by emo, punk, alt rock, and trap. I was
             also a member of an underground collective called Ghost Network. As my interests expanded, I learned how to
@@ -189,7 +189,7 @@ export default function Hobbies() {
               />
             </LineChart>
           </ResponsiveContainer>
-          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+          <p className="section-body max-w-5xl mt-10 text-center">
             I started powerlifting in 2023 and followed NSuns and Sheiko's programs before being coached by Veniamin
             Yovenko in Feb. 2025.
             <br />
@@ -199,7 +199,7 @@ export default function Hobbies() {
         </>
       ) : tab === 'ice hockey' ? (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+          <p className="section-body max-w-5xl mt-10 text-center">
             I got into ice hockey in March 2024. I taught myself how to ice skate, occasionally play in beer league,
             and love watching the NHL.
             <br />
@@ -209,7 +209,7 @@ export default function Hobbies() {
         </div>
       ) : (
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 text-center">
-          <p className="max-w-5xl mt-10 text-center text-white text-2xl leading-relaxed">
+          <p className="section-body max-w-5xl mt-10 text-center">
             I've snowboarded in Pennsylvania, Vermont, West Virginia, and Maryland. My dream spots are Colorado and the
             French Alps.
           </p>

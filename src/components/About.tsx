@@ -30,7 +30,7 @@ export default function About() {
     >
       <SectionHeader title="Howdy!" visible={visible} />
 
-      <p className="section-subtitle max-w-6xl leading-relaxed text-white/88">
+      <p className="section-body max-w-6xl">
         I'm an AI/ML engineer with a passion for anything data science, machine learning, or mathematics-related.
         <br />
         <br />

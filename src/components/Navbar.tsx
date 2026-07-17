@@ -16,7 +16,7 @@ export default function Navbar() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed top-5 left-5 z-50 text-white text-3xl p-3 rounded-md transition-colors hover:text-cyan-400"
+          className="fixed left-[1.125rem] top-[1.125rem] z-50 rounded-md p-[0.7rem] text-[1.7rem] text-white transition-colors hover:text-cyan-400"
           aria-label="Open navigation"
         >
           <FaBars />
@@ -31,20 +31,20 @@ export default function Navbar() {
       )}
 
       <nav
-        className={`fixed top-0 left-0 h-full w-80 bg-black/50 backdrop-blur-sm border-r border-white/10 z-40 transform transition-transform duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-72 bg-black/50 backdrop-blur-sm border-r border-white/10 z-40 transform transition-transform duration-500 ease-in-out ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex justify-end p-7">
+        <div className="flex justify-end p-[1.55rem]">
           <button
             onClick={() => setOpen(false)}
-            className="text-white text-3xl transition-colors hover:text-cyan-400"
+            className="text-[1.7rem] text-white transition-colors hover:text-cyan-400"
             aria-label="Close navigation"
           >
             <FaTimes />
           </button>
         </div>
-        <ul className="flex flex-col space-y-4 px-9 py-7 text-2xl font-medium text-white">
+        <ul className="flex flex-col space-y-[0.9rem] px-8 py-[1.55rem] text-[1.35rem] font-medium text-white">
           <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="block py-2 transition-colors hover:text-cyan-400 cursor-pointer">About Me</a></li>
           <li><a href="#experience" onClick={(e) => scrollToSection(e, 'experience')} className="block py-2 transition-colors hover:text-cyan-400 cursor-pointer">Experience</a></li>
           <li><a href="#publications" onClick={(e) => scrollToSection(e, 'publications')} className="block py-2 transition-colors hover:text-cyan-400 cursor-pointer">Publications</a></li>

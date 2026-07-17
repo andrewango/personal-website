@@ -9,7 +9,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   scroll-behavior: auto;
   scroll-padding-top: 5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 * {
@@ -48,21 +48,27 @@ body {
 }
 
 .section-title {
-  font-size: clamp(2.9rem, 6.1vw, 5.45rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.9rem);
   font-weight: 600;
   line-height: 1.05;
   align-content: center;
 }
 
 .section-subtitle {
-  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   color: rgba(255, 255, 255, 0.88);
   align-content: center;
 }
 
+.section-body {
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.625;
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .page-section {
   min-height: 100vh;
-  padding: 5.75rem 2rem;
+  padding: 5.2rem 2rem;
   color: white;
 }
 
@@ -76,7 +82,7 @@ body {
 .section-header {
   width: fit-content;
   margin-right: auto;
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.5rem;
   margin-left: auto;
   text-align: center;
 }
@@ -84,12 +90,12 @@ body {
 .section-arrow {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-top: 2.25rem;
 }
 
 @media (max-width: 768px) {
   .page-section {
-    padding: 4.5rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
 }
 
