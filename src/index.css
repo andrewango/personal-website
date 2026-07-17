@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 body {
   background-color: #05070f;
@@ -10,7 +9,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   scroll-behavior: auto;
   scroll-padding-top: 5rem;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 * {
@@ -49,21 +48,21 @@ body {
 }
 
 .section-title {
-  font-size: clamp(4rem, 8.5vw, 7.5rem);
+  font-size: clamp(3.4rem, 7.2vw, 6.4rem);
   font-weight: 600;
   line-height: 1.05;
   align-content: center;
 }
 
 .section-subtitle {
-  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
   color: rgba(255, 255, 255, 0.88);
   align-content: center;
 }
 
 .page-section {
-  min-height: 110vh;
-  padding: 8rem 2rem;
+  min-height: 104vh;
+  padding: 6.75rem 2rem;
   color: white;
 }
 
@@ -77,7 +76,7 @@ body {
 .section-header {
   width: fit-content;
   margin-right: auto;
-  margin-bottom: 4rem;
+  margin-bottom: 3.25rem;
   margin-left: auto;
   text-align: center;
 }
@@ -85,12 +84,12 @@ body {
 .section-arrow {
   display: flex;
   justify-content: center;
-  margin-top: 3.5rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
   .page-section {
-    padding: 6rem 1.5rem;
+    padding: 5rem 1.5rem;
   }
 }
 
